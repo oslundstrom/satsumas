@@ -1,5 +1,9 @@
 # satsumas
 
+<p align="center">
+  <img src="docs/satsumas.png" alt="Mission patch: an orange with solar panels and a dish antenna, in orbit above the Earth, captioned SATSUMAS" width="320">
+</p>
+
 An unattended SDR ground station for polar-orbiting weather satellites, sited in
 Stockholm (~59.33°N, 18.07°E). It predicts passes, captures 137 MHz baseband,
 decodes the downlink to imagery, georeferences it onto a common grid, and runs
