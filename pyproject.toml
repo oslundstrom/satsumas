@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "satsumas"
+version = "0.0.0"
+description = "SDR weather-satellite ground station with cloud segmentation"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "oslundstrom" }]
+# No extras yet. [capture] arrives in S5, [ml] in S3, [notebook] with it.
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6", "pre-commit>=3.7"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/satsumas"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 88
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["satsumas"]

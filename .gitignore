@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+uv.lock.bak
+
+# Jupyter
+.ipynb_checkpoints/
+# Generated from the paired .py by jupytext (S3). The .py is source of truth.
+notebooks/reports/*.ipynb
+
+# Never commit pixels, IQ, or credentials. datasets/ holds manifests only.
+*.raw
+*.cf32
+*.wav
+*.s
+*.h5
+*.nc
+*.tif
+*.tiff
+.env
+secrets/
