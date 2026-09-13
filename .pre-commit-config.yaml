@@ -9,6 +9,12 @@ repos:
       - id: check-added-large-files
         args: [--maxkb=512]
       - id: check-merge-conflict
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.9.9
+    hooks:
+      # Keeps uv.lock in step with pyproject.toml; CI's `uv sync --locked`
+      # fails the build otherwise.
+      - id: uv-lock
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.13.0
     hooks:

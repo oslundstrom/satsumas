@@ -14,8 +14,14 @@ authors = [{ name = "oslundstrom" }]
 # No extras yet. [capture] arrives in S5, [ml] in S3, [notebook] with it.
 dependencies = []
 
+# Dev tooling is a dependency group, not an extra: `uv sync` installs it by
+# default, and it never becomes part of the published package's metadata the way
+# [ml] and [capture] will be.
 [dependency-groups]
 dev = ["pytest>=8.0", "ruff>=0.6", "pre-commit>=3.7"]
+
+[tool.uv]
+default-groups = ["dev"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/satsumas"]
@@ -33,3 +39,6 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["satsumas"]
+
+[tool.ruff.format]
+docstring-code-format = true

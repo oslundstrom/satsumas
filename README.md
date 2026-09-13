@@ -16,10 +16,24 @@ for the stage list and [docs/kill-criteria.md](docs/kill-criteria.md) for what
 stops it. Nothing is created before the stage that needs it — a directory
 appears in the same commit as its first working contents.
 
+## Toolchain
+
+`uv` for environments, dependency resolution and locking; `ruff` for linting and
+formatting; `pytest` for tests. No pip, no black, no isort, no flake8 —
+`uv.lock` and `.python-version` are committed, so every environment and CI run
+resolves identically.
+
 ## Quickstart
 
 ```sh
-uv sync            # or: pip install -e . && pip install pytest ruff pre-commit
-pre-commit install
-pytest
+uv sync                       # creates .venv, installs the package + dev group
+uv run pre-commit install
+uv run pytest
+uv run ruff check --fix .
+uv run ruff format .
 ```
+
+`uv` reads `.python-version` and fetches the interpreter itself; nothing needs
+to be installed first. The package stays plain-`pip`-installable
+(`pip install -e .`) because S0's done-criterion says so and because a capture
+agent on a Pi should not need `uv` — but the development workflow is `uv run`.
